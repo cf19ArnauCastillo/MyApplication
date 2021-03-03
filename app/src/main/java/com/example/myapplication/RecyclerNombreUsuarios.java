@@ -7,19 +7,17 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-
+/*
 public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreUsuarios.ViewHolder>{{
 }
 
 
     private ArrayList<usuario> usuarios;
 
-   /* public RecyclerNombreUsuarios(ArrayList<mensaje> arrayMissatges ){
+    public RecyclerNombreUsuarios(ArrayList<mensaje> arrayMissatges ){
         this.mensajes = arrayMissatges;
     }
-*/
+
 
     @NonNull
     @Override
@@ -50,3 +48,4 @@ public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreU
         }
     }
 }
+*/
