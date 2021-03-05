@@ -7,45 +7,45 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-/*
-public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreUsuarios.ViewHolder>{{
-}
 
+import java.util.ArrayList;
+
+public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreUsuarios.ViewHolder>{
 
     private ArrayList<usuario> usuarios;
 
-    public RecyclerNombreUsuarios(ArrayList<mensaje> arrayMissatges ){
+    public RecyclerNombreUsuarios(ArrayList< mensaje > arrayMissatges) {
         this.mensajes = arrayMissatges;
     }
 
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder (@NonNull ViewGroup parent,int viewType){
         View view2 = LayoutInflater.from(parent.getContext()).inflate(R.layout.users_list, parent, false);
         ViewHolder holder = new ViewHolder(view2);
 
         return holder;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        @Override
+        public void onBindViewHolder (@NonNull ViewHolder holder,int position){
         holder.etiquetaMissatge.setText(mensajes.get(position).getmensaje());
     }
 
-    @Override
-    public int getItemCount() {
+        @Override
+        public int getItemCount () {
         return mensajes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+        public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView etiquetaMissatge;
+            TextView etiquetaMissatge;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            etiquetaMissatge = itemView.findViewById(R.id.txtMisatge);
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
+                etiquetaMissatge = itemView.findViewById(R.id.txtMisatge);
+            }
         }
     }
 }
-*/
