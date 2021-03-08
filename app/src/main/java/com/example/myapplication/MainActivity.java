@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference myRef2;
 
     ArrayList<mensaje> mensajes;
+    ArrayList<usuario> usuarios;
 
-    //ArrayList<usuario> usuarios;
     public Context context;
 
     @Override
@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
-        //DatabaseReference myRef2 = database.getReference("UsuariosXat");
+        DatabaseReference myRef2 = database.getReference("UsuariosXat");
 
         escribir=(EditText)findViewById(R.id.escribir);
         enviar=(Button) findViewById(R.id.enviar);
         escribir1="";
         mensajes = new ArrayList<mensaje>();
-        //usuarios = new ArrayList<usuario>();
+        usuarios = new ArrayList<usuario>();
 
         enviar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                 // Failed to read value
                 Log.i("logTest", "Failed to read value.", error.toException());
             }
-        });
+        });/*
+        public class recogerUsuario(String usuario) {
+            user = usuario;
+        }*/
     }
 }

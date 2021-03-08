@@ -3,7 +3,7 @@ package com.example.myapplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,8 +14,8 @@ public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreU
 
     private ArrayList<usuario> usuarios;
 
-    public RecyclerNombreUsuarios(ArrayList< mensaje > arrayMissatges) {
-        this.mensajes = arrayMissatges;
+    public RecyclerNombreUsuarios(ArrayList< usuario > arrayUsuarios) {
+        this.usuarios = arrayUsuarios;
     }
 
 
@@ -30,22 +30,21 @@ public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreU
 
         @Override
         public void onBindViewHolder (@NonNull ViewHolder holder,int position){
-        holder.etiquetaMissatge.setText(mensajes.get(position).getmensaje());
+        holder.Usuarios.setText(usuarios.get(position).getNombre());
     }
 
         @Override
         public int getItemCount () {
-        return mensajes.size();
+        return usuarios.size();
     }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
-            TextView etiquetaMissatge;
+            Button Usuarios;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                etiquetaMissatge = itemView.findViewById(R.id.txtMisatge);
-            }
-        }
+                Usuarios = itemView.findViewById(R.id.Usuarios); }
     }
 }
+

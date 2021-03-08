@@ -47,4 +47,5 @@ public class RecyclerBocadillosChat extends RecyclerView.Adapter<RecyclerBocadil
             etiquetaMissatge = itemView.findViewById(R.id.txtMisatge);
         }
     }
+
 }
