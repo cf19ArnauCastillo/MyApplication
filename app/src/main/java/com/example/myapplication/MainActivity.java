@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
     String escribir1;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    DatabaseReference myRef2;
+    DatabaseReference dbUsuarios;
 
-    ArrayList<mensaje> mensajes;
-    ArrayList<usuario> usuarios;
+    ArrayList<Mensaje> mensajes;
+    ArrayList<Usuario> usuarios;
 
     public Context context;
 
@@ -41,23 +40,53 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
-        DatabaseReference myRef2 = database.getReference("UsuariosXat");
+        DatabaseReference dbUsuarios = database.getReference("UsuariosXat");
 
         escribir=(EditText)findViewById(R.id.escribir);
         enviar=(Button) findViewById(R.id.enviar);
         escribir1="";
-        mensajes = new ArrayList<mensaje>();
-        usuarios = new ArrayList<usuario>();
+        mensajes = new ArrayList<Mensaje>();
+        usuarios = new ArrayList<Usuario>();
 
         enviar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                mensaje mensaje = new mensaje(escribir.getText().toString());
+
+                Mensaje mensaje = new Mensaje(escribir.getText().toString());
                 mensajes.add(mensaje);
 
                 myRef.setValue(mensajes);
 
                 //usuarios.add(usuario);
                 //myRef2.setValue(usuarios);
+            }
+        });
+
+
+        dbUsuarios.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.i("logTest " ,""+dataSnapshot.getChildrenCount());
+
+                usuarios.clear();
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Log.i("logTest", postSnapshot.getKey());
+
+                    Usuario usuario = new Usuario(postSnapshot.getKey());
+                    usuarios.add(usuario);
+                }
+
+                RecyclerView recycler= findViewById(R.id.recyclerUsuarios);
+                recycler.setAdapter(new RecyclerNombreUsuarios(usuarios), context);
+                recycler.setLayoutManager(new LinearLayoutManager((context)));
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.i("logTest", "Failed to read value.", error.toException());
             }
         });
 
@@ -69,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 mensajes.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    mensaje mensaje = postSnapshot.getValue(mensaje.class);
+                    Mensaje mensaje = postSnapshot.getValue(Mensaje.class);
                     mensajes.add(mensaje);
                     Log.i("logTest",mensaje.getmensaje());
                 }
@@ -83,9 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 // Failed to read value
                 Log.i("logTest", "Failed to read value.", error.toException());
             }
-        });/*
-        public class recogerUsuario(String usuario) {
-            user = usuario;
-        }*/
+        });
     }
+
+
 }
