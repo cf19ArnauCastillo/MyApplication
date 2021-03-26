@@ -28,6 +28,7 @@ public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreU
     ArrayList<Mensaje> mensajes;
     Context con;
     DatabaseReference myRef;
+
     public RecyclerNombreUsuarios(ArrayList<Usuario> arrayUsuarios, Context con) {
         this.Usuarios = arrayUsuarios;
         this.con = con;
