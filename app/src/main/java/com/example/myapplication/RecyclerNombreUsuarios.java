@@ -17,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.BreakIterator;
@@ -26,12 +27,11 @@ public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreU
     private ArrayList<Usuario> Usuarios;
     ArrayList<Mensaje> mensajes;
     Context con;
-
+    DatabaseReference myRef;
     public RecyclerNombreUsuarios(ArrayList<Usuario> arrayUsuarios, Context con) {
         this.Usuarios = arrayUsuarios;
         this.con = con;
     }
-
 
     @NonNull
     @Override
@@ -63,7 +63,7 @@ public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreU
                         }
                         RecyclerView recycler= ((MainActivity) con).findViewById(R.id.bocadilloschat);
                         recycler.setAdapter(new RecyclerBocadillosChat(mensajes));
-                        recycler.setLayoutManager(new LinearLayoutManager((context)));
+                        recycler.setLayoutManager(new LinearLayoutManager((/*context*/con)));
                     }
 
                     @Override
@@ -79,16 +79,11 @@ public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreU
     }
 
     @Override
+    public int getItemCount() { return Usuarios.size(); }
 
-    public int getItemCount () {
-    return Usuarios.size();
-}
-
-public class ViewHolder extends RecyclerView.ViewHolder {
-
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         protected Button btnUsuario;
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

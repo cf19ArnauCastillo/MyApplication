@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 RecyclerView recycler= findViewById(R.id.recyclerUsuarios);
-                recycler.setAdapter(new RecyclerNombreUsuarios(usuarios), context);
+                recycler.setAdapter(new RecyclerNombreUsuarios(usuarios, context));
                 recycler.setLayoutManager(new LinearLayoutManager((context)));
 
 
@@ -114,6 +114,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

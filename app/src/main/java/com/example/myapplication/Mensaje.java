@@ -1,13 +1,10 @@
 package com.example.myapplication;
 
 public class Mensaje {
-
     public String escribir1;
 
     public Mensaje(){
-
     }
-
     public Mensaje(String escribir1){
         this.escribir1 = escribir1;
     }

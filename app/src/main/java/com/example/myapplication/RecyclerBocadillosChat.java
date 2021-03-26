@@ -18,7 +18,6 @@ public class RecyclerBocadillosChat extends RecyclerView.Adapter<RecyclerBocadil
         this.Mensajes = arrayMissatges;
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,8 +30,6 @@ public class RecyclerBocadillosChat extends RecyclerView.Adapter<RecyclerBocadil
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.etiquetaMissatge.setText(Mensajes.get(position).getmensaje());
-
-
     }
 
     @Override
